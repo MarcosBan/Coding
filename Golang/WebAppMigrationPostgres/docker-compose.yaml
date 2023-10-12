@@ -1,0 +1,28 @@
+version: "3"
+services:
+  db-app:
+    image: postgres
+    volumes:
+      - ./db/tables/01-clients.sql:/docker-entrypoint-initdb.d/01-clients.sql
+      - ./db/tables/02-clients.sql:/docker-entrypoint-initdb.d/02-clients.sql
+    environment:
+      POSTGRES_PASSWORD: "Postgres2022!"
+    ports:
+      - "5432:5432"
+    networks:
+      - internal
+  web-app:
+    build:
+      dockerfile: Dockerfile
+      context: ./
+    volumes:
+      - ./:/usr/src/app
+    ports:
+    - 8080:8080
+    networks:
+    - internal
+    depends_on:
+      - db-app
+networks:
+    internal:
+      driver: bridge
