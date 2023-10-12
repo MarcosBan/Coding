@@ -25,6 +25,7 @@ var clients = []client{
 
 func main() {
 	router := gin.Default()
+	database.init()
 	router.GET("/clients", getClients)
 	//router.GET("/clients/:id", getClientsByID)
 	router.GET("/dbconnect", getDbconnect)

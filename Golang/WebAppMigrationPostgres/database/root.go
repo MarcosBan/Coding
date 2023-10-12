@@ -4,9 +4,6 @@ import (
 	"database/sql"
 	"fmt"
 	"log"
-	"net/http"
-
-	"github.com/gin-gonic/gin"
 )
 
 func init() {
@@ -29,7 +26,7 @@ func writeDb() {
 	}
 }
 
-func getDbconnect(c *gin.Context) {
+func getDbconnect() {
 	connStr := "host=db-app user=postgres dbname=dbclients sslmode=disable password=Postgres2022!"
 	db, err := sql.Open("postgres", connStr)
 	sqlStatement, err := db.Query("SELECT * FROM clients")
@@ -38,5 +35,5 @@ func getDbconnect(c *gin.Context) {
 		log.Fatal(err)
 	}
 	//var message = "É pra conectar"
-	c.JSON(http.StatusOK, sqlStatement)
+	// c.JSON(http.StatusOK, sqlStatement)
 }
