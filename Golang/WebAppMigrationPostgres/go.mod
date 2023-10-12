@@ -1,4 +1,4 @@
-module github.com/marcosban/coding/golang/webappmigrationpostgres
+module github.com/marcosban/webappmigrationpostgres
 
 go 1.18
 
