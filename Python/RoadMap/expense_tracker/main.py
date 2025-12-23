@@ -2,7 +2,6 @@ from argparse import ArgumentParser
 
 from expenses import create_expense, update_expense, delete_expense, list_expenses, total_expenses
 
-
 def main():
     parser = ArgumentParser()
     parser.add_argument("--description", help="Expense description")
