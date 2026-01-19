@@ -26,4 +26,11 @@ def add_task(description, createdAt):
     file.close()
     return new_task['id']
 
+def get_tasks():
+    create_register()
+    with open('tasks.json', 'r') as file:
+        tasks = json.load(file)
+    file.close()
+    return tasks
+
 create_register()
