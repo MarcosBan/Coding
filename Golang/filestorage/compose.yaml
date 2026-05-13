@@ -1,0 +1,25 @@
+services:
+  postgres:
+    container_name: filestorage.db
+    image: postgres:latest
+    environment:
+      POSTGRES_PASSWORD: 1234
+    volumes:
+      - postgres_data:/data/postgres
+    ports:
+      - 5432:5432
+    networks:
+      - local-networks
+  rabbitmq:
+    container_name: filestorage.rabbitmq
+    image: rabbitmq:3
+    ports:
+      - 5672:5672
+
+volumes:
+  postgres_data:
+
+networks:
+  local-networks:
+    driver: bridge
+  
